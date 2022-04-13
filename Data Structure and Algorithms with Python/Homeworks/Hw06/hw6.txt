@@ -1,0 +1,46 @@
+class SparseArray():
+    class _Node():
+        __slots__ = "_element","_next"
+        def __init__(self, element, next):
+            self._element=element
+            self._next=next
+        def __str__(self):
+            return str(self._element)+" "+str(self._next)
+    def __init__(self, length):
+        self._data=[None]*length
+    def __getitem__(self, index):
+        return self._data[index]
+    def __setitem__(self, index, value):
+        if value!=None:
+            node=self._Node(value, self._data[index+1])
+            self._data[index]=node
+print("Note that time complexitiy of __getitem__ is clearly O(1) because this method\n"
+      "is one time operation in selected index")
+print("Note that time complexity of __setitem__ is O(n-m) where n is size of array and\n"
+      "m is the index in which we want to set a new item.When we set new item to array\n"
+      "indexes of elements just after index m would be increased by 1.So,this would lead\n"
+      "to n-m operation.In worst case,time consuming is O(n).")
+sa=SparseArray(100)
+sa[23]="c"
+sa[24]=[1,2]
+print(sa[23])
+print(sa[24])
+print(sa[25])
+print(sa[23])
+
+
+--------------------------------------
+
+class SparseArray():
+    def __init__(self, length):
+        self._data=[None]*length
+    def __getitem__(self, item):
+        return self._data[item]
+    def __setitem__(self, key, value):
+        self._data[key]=value
+    def __str__(self):
+        return str(self._data)
+
+sa=SparseArray(100)
+sa[12]=5
+print(sa[12])

@@ -1,0 +1,57 @@
+import math
+import numpy as np
+import sympy as sp
+sp.interactive.printing.init_printing(use_latex=True)
+import sympy.solvers.ode.systems as sod
+
+def do_equation():
+    return 0
+def det():
+    k, m, n = sp.symbols('k m n', integer=True)
+    arr=sp.matrices.Matrix([[2-k,0,1],[23,-2-k,-13],[-1,0,4-k]])
+    det=sp.det(arr)
+    print(det)
+    sp.pprint(det)
+#det()
+def ode():
+    k, m, n = sp.symbols('k m n', integer=True)
+    x = sp.symbols("x")
+    f = sp.Function("f")
+    eq = sp.Eq(f(x).diff(x)-3*f(x)+64*(np.e)**(-5*x), 0)
+    res = sp.dsolve(eq)
+    print(res)
+    sp.pprint(res)
+#ode()
+def ode_system():
+    k, m, n = sp.symbols('k m n', integer=True)
+    x, y, z, t = sp.symbols('x y z t')
+    f, g, h = sp.symbols('f g h', cls=sp.Function)
+    m=-81
+    eq1 = sp.Eq(f(x).diff(x) - 7*f(x) - m*g(x), 0)
+    eq2 = sp.Eq(g(x).diff(x) - f(x) + g(x), 0)
+    res = sod.dsolve_system([eq1, eq2])
+    print(res, "\n")
+    sp.pprint(res)
+#ode_system()
+def jordan_form():
+    k, m, n = sp.symbols('k m n', integer=True)
+    matrix = sp.Matrix([[2, 0, 1], [23, -2, 13], [-1, 0, 4]])
+    t = sp.symbols('t')
+    res = sod.matrix_exp_jordan_form(matrix,t)
+    sp.pprint(res)
+#jordan_form()
+def e_At():
+    matrix = sp.Matrix([[2, 0, 1], [23, -2, 13], [-1, 0, 4]])
+    t = sp.symbols('t')
+    res = sod.matrix_exp(matrix, t)
+    sp.pprint(res)
+#e_At()
+
+-----------------------------------------
+
+t=sp.symbols("t")
+Q=sp.Function("Q")
+Q0=sp.symbols("Q0")
+eq = sp.Eq(Q(t).diff(t)+Q(t)/50-sp.sin(t)/4-1/2, 0)
+res = sp.dsolve(eq)
+print(res)

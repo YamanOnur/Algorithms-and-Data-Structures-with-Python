@@ -1,0 +1,101 @@
+def pseudoCode(inp,counter=0):
+    if inp[0]>inp[1]:
+        return 0
+    if inp[len(inp)-1]>inp[len(inp)-2]:
+        return len(inp)-1
+    if inp[len(inp)//2-1]<inp[len(inp)//2] and inp[len(inp)//2]>inp[len(inp)//2+1]:
+        return len(inp)//2+counter
+    elif inp[len(inp)//2-1]<inp[len(inp)//2] and inp[len(inp)//2]<inp[len(inp)//2+1]:
+        first_length=len(inp)
+        inp=inp[first_length//2:first_length]
+        counter+=first_length-len(inp)
+        return pseudoCode(inp,counter)
+    elif inp[len(inp)//2-1]>inp[len(inp)//2] and inp[len(inp)//2]>inp[len(inp)//2+1]:
+        first_length = len(inp)
+        inp=inp[0:first_length//2]
+        return pseudoCode(inp,0)
+
+-----------------------------------------------------
+
+given=[12,17,38,54,55,69,68,44,39,19,14,7]
+def pseudoCode(inp,counter=0):
+    if inp[0]>inp[1]:
+        return 0
+    if inp[len(inp)-1]>inp[len(inp)-2]:
+        return len(inp)-1
+    if inp[len(inp)//2-1]<inp[len(inp)//2] and inp[len(inp)//2]>inp[len(inp)//2+1]:
+        return len(inp)//2+counter
+    elif inp[len(inp)//2-1]<inp[len(inp)//2] and inp[len(inp)//2]<inp[len(inp)//2+1]:
+        first_length=len(inp)
+        inp=inp[first_length//2:first_length]
+        counter+=first_length-len(inp)
+        return pseudoCode(inp,counter)
+    elif inp[len(inp)//2-1]>inp[len(inp)//2] and inp[len(inp)//2]>inp[len(inp)//2+1]:
+        first_length = len(inp)
+        inp=inp[0:first_length//2]
+        counter=0
+        return pseudoCode(inp,counter)
+print(pseudoCode([7,12,14,17,19,68,69,55,54,44,39,38]))
+print(pseudoCode(given))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,68,69]))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,69,68]))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,69,68,55]))
+print(pseudoCode([69,68,55,54,44,39,38,19,17,14,12,7]))
+print(pseudoCode([68,69,55,54,44,39,38,19,17,14,12,7]))
+print(pseudoCode([7,12,14,69,68,55,54,44,39,38,19,17]))
+
+-------------------------------------------------------
+
+given=[12,17,38,54,55,69,68,44,39,19,14,7]
+def pseudoCode(inp,counter=0):
+    if inp[0]>inp[1]:
+        return 0
+    if inp[len(inp)-1]>inp[len(inp)-2]:
+        return len(inp)-1
+    if inp[len(inp)//2-1]<inp[len(inp)//2] and inp[len(inp)//2]>inp[len(inp)//2+1]:
+        return len(inp)//2+counter
+    elif inp[len(inp)//2-1]<inp[len(inp)//2] and inp[len(inp)//2]<inp[len(inp)//2+1]:
+        first_length=len(inp)
+        inp=inp[first_length//2:first_length]
+        counter+=first_length-len(inp)
+        return pseudoCode(inp,counter)
+    elif inp[len(inp)//2-1]>inp[len(inp)//2] and inp[len(inp)//2]>inp[len(inp)//2+1]:
+        inp.remove(inp[len(inp)//2])
+        return pseudoCode(inp,0)
+print(pseudoCode([7,12,14,17,19,68,69,55,54,44,39,38]))
+print(pseudoCode(given))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,68,69]))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,69,68]))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,69,68,55]))
+print(pseudoCode([69,68,55,54,44,39,38,19,17,14,12,7]))
+print(pseudoCode([68,69,55,54,44,39,38,19,17,14,12,7]))
+
+---------------------------------------------------------
+
+given=[12,17,38,54,55,69,68,44,39,19,14,7]
+def pseudoCode(inp):
+    if inp[len(inp)-1]>inp[len(inp)-2] or len(inp)-1==0:
+        return len(inp)-1
+    else:
+        inp.remove(inp[len(inp)-1])
+        return pseudoCode(inp)
+print(pseudoCode(given))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,68,69]))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,69,68]))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,69,68,55]))
+print(pseudoCode([69,68,55,54,44,39,38,19,17,14,12,7]))
+
+----------------------------------------------------------
+
+given=[12,17,38,54,55,69,68,44,39,19,14,7]
+def pseudoCode(inp):
+    if inp==sorted(inp):
+        return len(inp)-1
+    else:
+        inp.remove(inp[len(inp)-1])
+        return pseudoCode(inp)
+
+print(pseudoCode(given))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,68,69]))
+print(pseudoCode([7,12,14,17,19,38,39,44,54,55,69,68]))
+print(pseudoCode([69,68,55,54,44,39,38,19,17,14,12,7]))

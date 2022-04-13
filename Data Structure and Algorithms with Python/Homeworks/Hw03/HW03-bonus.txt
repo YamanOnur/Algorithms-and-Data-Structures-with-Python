@@ -1,0 +1,16 @@
+import time
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+def measureTime(n):
+    start=time.time()
+    for i in range(n):
+        lst=[4,6,1,7,2,9,0,8,3,5]
+        lst.sort()
+    end=time.time()
+    return end-start
+for i in range(3,7):
+    plt.scatter(i,measureTime(10**i))
+s=np.linspace(3,7)
+plt.plot(s,s*np.log(s,2))
+plt.show()

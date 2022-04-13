@@ -1,0 +1,39 @@
+table=self.hash_table
+        input_file=open(input_path, "r")
+        input_words=input_file.read().split()
+        input_file.close()
+        recommend_list = []
+        chars=[]
+        for i in range(97,123):
+            chars.append(chr(i))
+        for word in input_words:
+            word = word.lower()
+            recommend_list.clear()
+            try:recommend_list.append(table[word])
+            except:
+                for i in range(len(word)):
+                    word_=word[0:i]+word[i+1:len(word)]
+                    try:recommend_list.append(table[word_])
+                    except:pass
+                    for j in range(len(chars)):
+                        _word=word[0:i]+chars[j]+word[i:len(word)]
+                        try:
+                            recommend_list.append(table[_word])
+                        except:pass
+            print(recommend_list)
+
+----------------------------------
+
+class SpellChecker:
+    c=0
+    hash_table = ChainHashMap()
+    data = open("Assignment3Data.txt", "r")
+    for d in data.readlines():
+        d=d.strip()
+        if len(d)>5:
+            hash_table[len(d)]=d
+    data.close()
+    for i in hash_table.items():
+        print(i)
+        c+=1
+sc = SpellChecker()

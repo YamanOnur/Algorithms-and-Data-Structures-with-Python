@@ -1,0 +1,10 @@
+murphys --> murphy
+online --> OK
+murphy --> OK
+prduct --> product
+sstem --> system
+policy --> OK
+numbre --> No Recommendation
+please --> OK
+navailable --> available,unavailable
+copyright --> OK
