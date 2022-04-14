@@ -1,1 +1,1 @@
-# Algorithms-and-Data-Structures-with-Python-Ceng-310
+# Algorithms-and-Data-Structures-with-Python-Course-Ceng-310
